@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="./vendors/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="./css/calendar.css">
+
+    <style>
+        /* demo styles */
+        *,
+        ::after,
+        ::before {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+
+        .btn-style {
+            display: inline-block;
+            margin-right: 8px;
+            padding: .375rem .75rem;
+            font-weight: 400;
+            color: #212529;
+            text-align: center;
+            vertical-align: middle;
+            background-color: transparent;
+            border: 1px solid #ddd;
+            line-height: 1.5;
+            border-radius: .25rem;
+            transition: all ease .35s;
+            font-size: 1rem;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .btn-style.active {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="d-flex align-items-center">
+        <div style="margin-right: 15px;">Style: </div>
+        <div class="btn-style active">Default</div>
+        <div class="btn-style">Bordered</div>
+    </div>
+
+    <div id="ac_container">
+        <div class="text-center">
+            <h1>When would you like to go?</h1>
+        </div>
+
+        <div class="ac_menu-container d-flex flex-wrap align-items-center">
+            <div class="ac_menu-label">Lenght of stay: </div>
+            <div class="ac_schedule-menu">
+                <div class="ac_btn" data-sched="1">1 Week</div>
+                <div class="ac_btn" data-sched="2">Weekends</div>
+                <div class="ac_btn" data-sched="3">Weekend</div>
+                <div class="ac_btn" data-sched="4">2 Weeks</div>
+            </div>
+
+            <select id="ac_menu-select">
+                <option value="1">1 Week</option>
+                <option value="2">Weekends</option>
+                <option value="3">Weekend</option>
+                <option value="4">2 Weeks</option>
+            </select>
+        </div>
+        <div id="availability-calendar" class=""></div>
+
+        <div class="ac_legend-container">
+            <div class="legend-block _available">
+                <div class="legend-color"></div>
+                <div class="legend-label">Possible arrivals</div>
+            </div>
+
+            <div class="legend-block _selected">
+                <div class="legend-color"></div>
+                <div class="legend-label">Possible arrivals</div>
+            </div>
+        </div>
+        
+    </div>
+
+
+
+
+    <!-- scripts -->
+    <script src="./vendors/jquery/dist/jquery.min.js"></script>
+    <script src="./vendors/jquery-ui/jquery-ui.min.js"></script>
+    <script src="./vendors/jquery-ui/jquery-ui.multidatespicker.js"></script>
+    <script src="./js/calendar.js"></script>
+
+    <!-- demo script -->
+    <script>
+        $(document).on('click', '.btn-style:not(.active)', function () {
+            console.log('asdlkfja;jd');
+            $('.btn-style.active').removeClass('active');
+            $(this).addClass('active');
+
+            $('#availability-calendar').toggleClass('bordered');
+        })
+    </script>
+</body>
+
+</html>

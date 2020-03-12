@@ -1,0 +1,241 @@
+.d-flex {
+  display: flex;
+  display: -ms-flexbox; }
+
+.align-items-center {
+  align-items: center;
+  -ms-flex-align: center; }
+
+.justify-content-center {
+  justify-content: center;
+  -ms-flex-pack: center; }
+
+.flex-wrap {
+  flex-wrap: wrap;
+  -ms-flex-wrap: wrap; }
+
+.text-center {
+  text-align: center; }
+
+#ac_container {
+  font-family: 'Lato', sans-serif;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto; }
+  @media (min-width: 576px) {
+    #ac_container {
+      max-width: 540px; } }
+  @media (min-width: 768px) {
+    #ac_container {
+      max-width: 720px; } }
+  @media (min-width: 992px) {
+    #ac_container {
+      max-width: 960px; } }
+  @media (min-width: 1200px) {
+    #ac_container {
+      max-width: 1140px; } }
+
+.ac_menu-container {
+  margin-bottom: 40px; }
+  .ac_menu-container .ac_menu-label {
+    margin-right: 15px;
+    font-weight: 500; }
+  .ac_menu-container .ac_schedule-menu {
+    display: none;
+    align-items: center;
+    -ms-flex-align: center;
+    flex-wrap: wrap;
+    -ms-flex-wrap: wrap; }
+    .ac_menu-container .ac_schedule-menu .ac_btn {
+      display: inline-block;
+      margin-right: 8px;
+      padding: .375rem .75rem;
+      font-weight: 400;
+      color: #212529;
+      text-align: center;
+      vertical-align: middle;
+      background-color: transparent;
+      border: 1px solid #ddd;
+      line-height: 1.5;
+      border-radius: .25rem;
+      transition: all ease .35s;
+      font-size: 1rem;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none; }
+      .ac_menu-container .ac_schedule-menu .ac_btn:hover {
+        background-color: #f1f1f1; }
+      .ac_menu-container .ac_schedule-menu .ac_btn.active {
+        background-color: #4bbb4b;
+        color: #fff; }
+  .ac_menu-container #ac_menu-select {
+    display: block;
+    margin-top: 10px;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out; }
+  @media (min-width: 768px) {
+    .ac_menu-container #ac_menu-select {
+      display: none; }
+    .ac_menu-container .ac_schedule-menu {
+      display: flex;
+      display: -ms-flexbox; } }
+
+.ac_legend-container {
+  display: flex;
+  display: -ms-flexbox;
+  align-items: center;
+  -ms-flex-align: center;
+  justify-content: center;
+  -ms-flex-pack: center; }
+  .ac_legend-container .legend-block {
+    display: flex;
+    display: -ms-flexbox;
+    align-items: center;
+    -ms-flex-align: center; }
+    .ac_legend-container .legend-block._available {
+      margin-right: 30px; }
+      .ac_legend-container .legend-block._available .legend-color {
+        background-color: rgba(75, 187, 75, 0.25); }
+    .ac_legend-container .legend-block._selected .legend-color {
+      background-color: #4bbb4b; }
+  .ac_legend-container .legend-color {
+    width: 18px;
+    height: 15px;
+    border-radius: 4px;
+    margin-right: 10px; }
+
+#availability-calendar {
+  position: relative;
+  transition: all ease .5s; }
+  #availability-calendar.bordered .ui-datepicker-header {
+    margin-bottom: 15px;
+    background-color: #4bbb4b; }
+    #availability-calendar.bordered .ui-datepicker-header > a[class*="ui-datepicker-"] {
+      border: 1px solid #4bbb4b;
+      background-color: #fff;
+      border-radius: 0; }
+      #availability-calendar.bordered .ui-datepicker-header > a[class*="ui-datepicker-"].ui-state-hover {
+        border: 1px solid #4bbb4b; }
+  #availability-calendar.bordered .ui-datepicker-group-first .ui-datepicker-calendar {
+    margin-left: 0; }
+  #availability-calendar.bordered .ui-datepicker-group-last .ui-datepicker-calendar {
+    margin-right: 0; }
+  #availability-calendar.bordered .ui-datepicker-group table {
+    width: calc(100% - 10px); }
+  #availability-calendar.bordered .ui-datepicker-title {
+    color: #fff; }
+  #availability-calendar.bordered .ui-datepicker th {
+    border: 1px solid #ddd !important; }
+  #availability-calendar.bordered .ui-datepicker td {
+    padding: 0 !important;
+    border: 1px solid #ddd !important; }
+  #availability-calendar.bordered .ui-datepicker .ui-state-default {
+    border-radius: 0; }
+  #availability-calendar.loading {
+    opacity: .5; }
+  #availability-calendar .ui-datepicker {
+    width: 100% !important; }
+  #availability-calendar .ui-datepicker-group table {
+    width: calc(100% - 20px);
+    table-layout: fixed; }
+  #availability-calendar .ui-datepicker {
+    width: 100% !important;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    font-family: 'Lato', sans-serif; }
+    #availability-calendar .ui-datepicker th {
+      text-align: right;
+      user-select: none; }
+    #availability-calendar .ui-datepicker td {
+      position: relative;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      color: #212529;
+      user-select: none; }
+      #availability-calendar .ui-datepicker td:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: ""; }
+    #availability-calendar .ui-datepicker td[data-handler="selectDay"] {
+      padding: 2px;
+      border: 0;
+      background-color: transparent; }
+    #availability-calendar .ui-datepicker .ui-state-highlight {
+      border: 0; }
+      #availability-calendar .ui-datepicker .ui-state-highlight .ui-state-default {
+        background-color: rgba(75, 187, 75, 0.2);
+        text-decoration: underline;
+        color: #4bbb4b;
+        font-weight: 800; }
+    #availability-calendar .ui-datepicker .ui-state-default {
+      position: relative;
+      padding: 4px 6px;
+      border: 0;
+      background-color: transparent;
+      height: 42px;
+      font-size: 16px;
+      border-radius: 3px;
+      transition: all ease .35s;
+      font-weight: 800;
+      color: rgba(33, 37, 41, 0.6); }
+    #availability-calendar .ui-datepicker .ui-state-disabled {
+      opacity: 1;
+      background: transparent; }
+      #availability-calendar .ui-datepicker .ui-state-disabled .ui-state-default {
+        opacity: .5;
+        text-decoration: line-through; }
+  #availability-calendar .ui-datepicker-header {
+    margin-bottom: 30px;
+    padding: 0;
+    background-color: transparent;
+    background-position: center;
+    border: 0;
+    border-radius: 0; }
+  #availability-calendar .ui-datepicker-title {
+    padding: 6px 0px;
+    user-select: none; }
+  #availability-calendar .ui-datepicker-header > a[class*="ui-datepicker-"] {
+    top: 0;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    background-size: 35px;
+    background-position: center; }
+    #availability-calendar .ui-datepicker-header > a[class*="ui-datepicker-"].ui-state-hover {
+      border: 1px solid #ddd; }
+    #availability-calendar .ui-datepicker-header > a[class*="ui-datepicker-"] .ui-icon {
+      display: none; }
+  #availability-calendar .ui-datepicker-prev {
+    left: 0;
+    background-image: url("../img/arrows_left.png") !important; }
+    #availability-calendar .ui-datepicker-prev.ui-datepicker-prev-hover {
+      left: 0; }
+  #availability-calendar .ui-datepicker-next {
+    right: 0;
+    background-image: url("../img/arrows_right.png") !important; }
+    #availability-calendar .ui-datepicker-next.ui-datepicker-next-hover {
+      right: 0; }
+  @media (min-width: 576px) and (max-width: 768px) {
+    #availability-calendar .ui-datepicker .ui-state-default {
+      height: 36px;
+      font-size: 14px; } }

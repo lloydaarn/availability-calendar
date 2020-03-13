@@ -25,6 +25,14 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
         }
 
+        .container {
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+            max-width: 1140px;
+        }
+
         .btn-style {
             display: inline-block;
             margin-right: 8px;
@@ -46,6 +54,16 @@
             user-select: none;
         }
 
+        .get-data {
+            display: inline-block;
+            padding: .375rem .75rem;
+            border: 1px solid #ddd;
+            background-color: #fafafa;
+            cursor: pointer;
+            border-radius: .25rem;
+            user-select: none;
+        }
+
         .btn-style.active {
             background-color: #000;
             color: #fff;
@@ -60,6 +78,7 @@
         <div class="btn-style">Bordered</div>
     </div>
 
+    <!-- calendar -->
     <div id="ac_container">
         <div class="text-center">
             <h1>When would you like to go?</h1>
@@ -94,26 +113,43 @@
                 <div class="legend-label">Possible arrivals</div>
             </div>
         </div>
-        
     </div>
+    <!-- //end calendar -->
 
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <div class="btn get-data">Get Data</div>
+        <br>
+        <ul class="calendar-data">
 
+        </ul>
+    </div>
 
 
     <!-- scripts -->
     <script src="./vendors/jquery/dist/jquery.min.js"></script>
-    <script src="./vendors/jquery-ui/jquery-ui.min.js"></script>
+    <script src="./vendors/jquery-ui/jquery-ui.imp-modified.js"></script>
     <script src="./vendors/jquery-ui/jquery-ui.multidatespicker.js"></script>
     <script src="./js/calendar.js"></script>
 
     <!-- demo script -->
     <script>
         $(document).on('click', '.btn-style:not(.active)', function () {
-            console.log('asdlkfja;jd');
             $('.btn-style.active').removeClass('active');
             $(this).addClass('active');
 
             $('#availability-calendar').toggleClass('bordered');
+        })
+
+        $(document).on('click', '.get-data', function () {
+            $('.calendar-data').empty();
+            var dates = _availabilityCalendar.getDates();
+
+            $.each(dates, function (i) {
+                $('.calendar-data').append("<li>" + dates[i] + "</li>")
+            })
         })
     </script>
 </body>

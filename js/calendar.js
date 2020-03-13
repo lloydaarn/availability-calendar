@@ -13,7 +13,8 @@ var _windowSize = function () {
 }
 
 var _availabilityCalendar = (function () {
-    // cache DOM
+    // cache
+    var availableDates;
     $calendar = $('#availability-calendar');
 
 
@@ -21,7 +22,7 @@ var _availabilityCalendar = (function () {
     $(document).on('click', '.ac_btn:not(.active)', function () {
         var schedule = $(this).data('sched');
 
-        getDates(schedule);
+        loadDates(schedule);
 
         $calendar.addClass('loading');
         $calendar.multiDatesPicker('resetDates');
@@ -32,14 +33,14 @@ var _availabilityCalendar = (function () {
 
     $(document).on('change', '#ac_menu-select', function () {
         var schedule = $(this).val();
-        getDates(schedule);
+        loadDates(schedule);
 
         $calendar.addClass('loading');
         $calendar.multiDatesPicker('resetDates');
     })
 
     // render
-    function getDates(schedule) {
+    function loadDates(schedule) {
         $.ajax({
             type: "POST",
             url: './dates.php',
@@ -49,11 +50,22 @@ var _availabilityCalendar = (function () {
                 schedule: schedule
             },
             success: function (response) {
-                // var schedule = ;
-
                 $calendar.removeClass('loading');
-                $calendar.multiDatesPicker('addDates', response);
+                availableDates = response;
+
+                setAvailableDates(availableDates);
             }
+        })
+    }
+
+    function getDates() {
+        return $calendar.multiDatesPicker('getDates');
+    }
+
+    function setAvailableDates(availableDates) {
+        // console.log(availableDates);
+        $.each(availableDates, function (i) {
+            $('[data-real-fulldate="' + availableDates[i] + '"]').addClass('checkin-date');
         })
     }
 
@@ -77,12 +89,33 @@ var _availabilityCalendar = (function () {
         // extend jqueryUI datepicker 
         // http://dubrox.github.io/Multiple-Dates-Picker-for-jQuery-UI/
         $calendar.multiDatesPicker({
-            create: function () {
-                alert();
-            },
-            onSelect: function (date, datepicker) {
-
+            mode: 'daysRange',
+            autoselectRange: [0, 8],
+            onSelect: function () {
+                $(document).on('DOMSubtreeModified', $calendar, function () {
+                    setAvailableDates(availableDates);
+                });
             }
+            // create: function () {
+            //     alert();
+            // }
+            // onSelect: function (date, el) {
+            //     console.log($(this));
+            //     console.log(el);
+
+            //     var day = el.selectedDay,
+            //         mon = el.selectedMonth,
+            //         year = el.selectedYear;
+
+            //     var el = $(el.dpDiv).find('[data-year="' + year + '"][data-month="' + mon + '"]').filter(function () {
+            //         return $(this).find('a').text().trim() == day;
+            //     });
+
+            //     if (el.hasClass('ui-state-highlight')) {
+
+            //     }
+
+            // }
         });
 
         // select schedule 1 as default
@@ -91,7 +124,8 @@ var _availabilityCalendar = (function () {
 
 
     return {
-        init: init
+        init: init,
+        getDates: getDates
     }
 })();
 

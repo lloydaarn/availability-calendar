@@ -178,12 +178,15 @@
       padding: 2px;
       border: 0;
       background-color: transparent; }
+    #availability-calendar .ui-datepicker td[data-handler="selectDay"]:not(.checkin-date) {
+      opacity: .4;
+      pointer-events: none; }
     #availability-calendar .ui-datepicker .ui-state-highlight {
-      border: 0; }
+      border: 0;
+      opacity: 1 !important; }
       #availability-calendar .ui-datepicker .ui-state-highlight .ui-state-default {
-        background-color: rgba(75, 187, 75, 0.2);
-        text-decoration: underline;
-        color: #4bbb4b;
+        background-color: #4bbb4b !important;
+        color: #fff !important;
         font-weight: 800; }
     #availability-calendar .ui-datepicker .ui-state-default {
       position: relative;
@@ -196,6 +199,10 @@
       transition: all ease .35s;
       font-weight: 800;
       color: rgba(33, 37, 41, 0.6); }
+    #availability-calendar .ui-datepicker .checkin-date .ui-state-default {
+      background-color: rgba(75, 187, 75, 0.3);
+      text-decoration: underline !important;
+      color: #4bbb4b; }
     #availability-calendar .ui-datepicker .ui-state-disabled {
       opacity: 1;
       background: transparent; }

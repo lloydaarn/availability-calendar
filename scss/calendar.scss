@@ -1,4 +1,4 @@
-$primary-color: #4bbb4b;
+$primary-color: #0068ff;
 
 
 .d-flex {
@@ -271,21 +271,18 @@ $primary-color: #4bbb4b;
             background-color: transparent;
         }
 
-        td[data-handler="selectDay"]:not(.ui-state-highlight) {
-            // pointer-events: none;
-
-            // .ui-state-default {
-            //     cursor: not-allowed;
-            // }
+        td[data-handler="selectDay"]:not(.checkin-date) {
+            opacity: .4;
+            pointer-events: none;
         }
 
         .ui-state-highlight {
             border: 0;
+            opacity: 1 !important;
 
             .ui-state-default {
-                background-color: transparentize($color: $primary-color, $amount: .8);
-                text-decoration: underline;
-                color: $primary-color;
+                background-color: $primary-color !important;
+                color: #fff !important;
                 font-weight: 800;
             }
         }
@@ -301,7 +298,14 @@ $primary-color: #4bbb4b;
             transition: all ease .35s;
             font-weight: 800;
             color: rgba(33, 37, 41, 0.6);
+        }
 
+        .checkin-date {
+            .ui-state-default {
+                background-color: transparentize($color: $primary-color, $amount: .7);
+                text-decoration: underline !important;
+                color: $primary-color;
+            }
         }
 
         .ui-state-disabled {

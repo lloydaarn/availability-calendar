@@ -70,7 +70,7 @@
       .ac_menu-container .ac_schedule-menu .ac_btn:hover {
         background-color: #f1f1f1; }
       .ac_menu-container .ac_schedule-menu .ac_btn.active {
-        background-color: #4bbb4b;
+        background-color: #0068ff;
         color: #fff; }
   .ac_menu-container #ac_menu-select {
     display: block;
@@ -109,9 +109,9 @@
     .ac_legend-container .legend-block._available {
       margin-right: 30px; }
       .ac_legend-container .legend-block._available .legend-color {
-        background-color: rgba(75, 187, 75, 0.25); }
+        background-color: rgba(0, 104, 255, 0.25); }
     .ac_legend-container .legend-block._selected .legend-color {
-      background-color: #4bbb4b; }
+      background-color: #0068ff; }
   .ac_legend-container .legend-color {
     width: 18px;
     height: 15px;
@@ -123,13 +123,13 @@
   transition: all ease .5s; }
   #availability-calendar.bordered .ui-datepicker-header {
     margin-bottom: 15px;
-    background-color: #4bbb4b; }
+    background-color: #0068ff; }
     #availability-calendar.bordered .ui-datepicker-header > a[class*="ui-datepicker-"] {
-      border: 1px solid #4bbb4b;
+      border: 1px solid #0068ff;
       background-color: #fff;
       border-radius: 0; }
       #availability-calendar.bordered .ui-datepicker-header > a[class*="ui-datepicker-"].ui-state-hover {
-        border: 1px solid #4bbb4b; }
+        border: 1px solid #0068ff; }
   #availability-calendar.bordered .ui-datepicker-group-first .ui-datepicker-calendar {
     margin-left: 0; }
   #availability-calendar.bordered .ui-datepicker-group-last .ui-datepicker-calendar {
@@ -178,12 +178,15 @@
       padding: 2px;
       border: 0;
       background-color: transparent; }
+    #availability-calendar .ui-datepicker td[data-handler="selectDay"]:not(.checkin-date) {
+      opacity: .4;
+      pointer-events: none; }
     #availability-calendar .ui-datepicker .ui-state-highlight {
-      border: 0; }
+      border: 0;
+      opacity: 1 !important; }
       #availability-calendar .ui-datepicker .ui-state-highlight .ui-state-default {
-        background-color: rgba(75, 187, 75, 0.2);
-        text-decoration: underline;
-        color: #4bbb4b;
+        background-color: #0068ff !important;
+        color: #fff !important;
         font-weight: 800; }
     #availability-calendar .ui-datepicker .ui-state-default {
       position: relative;
@@ -196,6 +199,10 @@
       transition: all ease .35s;
       font-weight: 800;
       color: rgba(33, 37, 41, 0.6); }
+    #availability-calendar .ui-datepicker .checkin-date .ui-state-default {
+      background-color: rgba(0, 104, 255, 0.3);
+      text-decoration: underline !important;
+      color: #0068ff; }
     #availability-calendar .ui-datepicker .ui-state-disabled {
       opacity: 1;
       background: transparent; }

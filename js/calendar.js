@@ -13,7 +13,8 @@ var _windowSize = function () {
 }
 
 var _availabilityCalendar = (function () {
-    // cache DOM
+    // cache
+    var availableDates;
     $calendar = $('#availability-calendar');
 
 
@@ -21,10 +22,7 @@ var _availabilityCalendar = (function () {
     $(document).on('click', '.ac_btn:not(.active)', function () {
         var schedule = $(this).data('sched');
 
-        getDates(schedule);
-
-        $calendar.addClass('loading');
-        $calendar.multiDatesPicker('resetDates');
+        loadDates(schedule);
 
         $('.ac_btn.active').removeClass('active');
         $(this).addClass('active');
@@ -32,14 +30,15 @@ var _availabilityCalendar = (function () {
 
     $(document).on('change', '#ac_menu-select', function () {
         var schedule = $(this).val();
-        getDates(schedule);
+        loadDates(schedule);
 
-        $calendar.addClass('loading');
-        $calendar.multiDatesPicker('resetDates');
     })
 
     // render
-    function getDates(schedule) {
+    function loadDates(schedule) {
+        $calendar.addClass('loading');
+        $calendar.multiDatesPicker('destroy');
+
         $.ajax({
             type: "POST",
             url: './dates.php',
@@ -49,17 +48,35 @@ var _availabilityCalendar = (function () {
                 schedule: schedule
             },
             success: function (response) {
-                // var schedule = ;
+                availableDates = response;
 
                 $calendar.removeClass('loading');
-                $calendar.multiDatesPicker('addDates', response);
+
+                pluginInit(schedule);
             }
         })
     }
 
-    function init() {
-        var months;
+    function getDates() {
+        return $calendar.multiDatesPicker('getDates');
+    }
 
+    function setAvailableDates(availableDates) {
+        console.log(availableDates);
+
+        $.each(availableDates, function (i) {
+            if ($('td[data-real-fulldate]').length) {
+                console.log('meron');
+            }
+            $('[data-real-fulldate="' + availableDates[i] + '"]').addClass('checkin-date');
+        })
+    }
+
+    function pluginInit(schedule) {
+        var months;
+        var range;
+
+        // set number of months per slide
         if (_windowSize().width > 991) {
             months = 3;
         } else if (_windowSize().width > 576) {
@@ -68,6 +85,21 @@ var _availabilityCalendar = (function () {
             months = 1;
         }
 
+        // set range
+        switch (schedule) {
+            case "sched1":
+                range = 8;
+                break;
+            case "sched2":
+                range = 3;
+                break;
+            case "sched3":
+                range = 5;
+                break;
+            case "sched4":
+                range = 15;
+                break;
+        }
 
         // jqueryUI datepicker
         $calendar.datepicker({
@@ -77,21 +109,29 @@ var _availabilityCalendar = (function () {
         // extend jqueryUI datepicker 
         // http://dubrox.github.io/Multiple-Dates-Picker-for-jQuery-UI/
         $calendar.multiDatesPicker({
-            create: function () {
-                alert();
-            },
-            onSelect: function (date, datepicker) {
-
+            mode: 'daysRange',
+            autoselectRange: [0, range],
+            onSelect: function () {
+                $(document).on('DOMSubtreeModified', $calendar, function () {
+                    setAvailableDates(availableDates);
+                });
             }
         });
 
+        $calendar.multiDatesPicker('resetDates');
+
+        setAvailableDates(availableDates);
+    }
+
+    function init() {
         // select schedule 1 as default
-        $('.ac_btn[data-sched="1"]').click();
+        $('.ac_btn[data-sched="sched1"]').click();
     }
 
 
     return {
-        init: init
+        init: init,
+        getDates: getDates
     }
 })();
 

@@ -2,7 +2,7 @@
 
 switch ($_POST["schedule"]) {
     case "sched1":
-        $dates = ['04/03/2020', '04/04/2020', '04/08/2020', '04/25/2020', '04/29/2020'];
+        $dates = ['03/30/2020', '04/04/2020', '04/08/2020', '04/25/2020', '04/29/2020'];
         echo json_encode($dates, JSON_UNESCAPED_UNICODE);
         break;
 

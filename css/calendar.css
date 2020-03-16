@@ -105,9 +105,10 @@
     display: flex;
     display: -ms-flexbox;
     align-items: center;
-    -ms-flex-align: center; }
+    -ms-flex-align: center;
+    font-size: 14px; }
     .ac_legend-container .legend-block._available {
-      margin-right: 30px; }
+      margin-right: 15px; }
       .ac_legend-container .legend-block._available .legend-color {
         background-color: rgba(0, 104, 255, 0.25); }
     .ac_legend-container .legend-block._selected .legend-color {
@@ -117,10 +118,16 @@
     height: 15px;
     border-radius: 4px;
     margin-right: 10px; }
+  @media (min-width: 576px) {
+    .ac_legend-container .legend-block {
+      font-size: 16px; }
+      .ac_legend-container .legend-block._available {
+        margin-right: 30px; } }
 
 #availability-calendar {
   position: relative;
-  transition: all ease .5s; }
+  transition: all ease .5s;
+  min-height: 390px; }
   #availability-calendar.bordered .ui-datepicker-header {
     margin-bottom: 15px;
     background-color: #0068ff; }

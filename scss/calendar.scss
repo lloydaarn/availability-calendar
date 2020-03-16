@@ -139,9 +139,10 @@ $primary-color: #0068ff;
         display: -ms-flexbox;
         align-items: center;
         -ms-flex-align: center;
+        font-size: 14px;
 
         &._available {
-            margin-right: 30px;
+            margin-right: 15px;
 
             .legend-color {
                 background-color: transparentize($color: $primary-color, $amount: .75);
@@ -161,11 +162,22 @@ $primary-color: #0068ff;
         border-radius: 4px;
         margin-right: 10px;
     }
+
+    @media(min-width: 576px) {
+        .legend-block {
+            font-size: 16px;
+
+            &._available {
+                margin-right: 30px;
+            }
+        }
+    }
 }
 
 #availability-calendar {
     position: relative;
     transition: all ease .5s;
+    min-height: 390px;
 
     &.bordered {
         .ui-datepicker-header {

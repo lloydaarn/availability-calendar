@@ -62,12 +62,8 @@ var _availabilityCalendar = (function () {
     }
 
     function setAvailableDates(availableDates) {
-        console.log(availableDates);
 
         $.each(availableDates, function (i) {
-            if ($('td[data-real-fulldate]').length) {
-                console.log('meron');
-            }
             $('[data-real-fulldate="' + availableDates[i] + '"]').addClass('checkin-date');
         })
     }
@@ -120,6 +116,9 @@ var _availabilityCalendar = (function () {
 
         $calendar.multiDatesPicker('resetDates');
 
+        $(document).on('DOMSubtreeModified', $calendar, function () {
+            setAvailableDates(availableDates);
+        });
         setAvailableDates(availableDates);
     }
 

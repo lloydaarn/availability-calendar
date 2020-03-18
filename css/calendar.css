@@ -32,7 +32,9 @@
       max-width: 720px; } }
   @media (min-width: 992px) {
     #ac_container {
-      max-width: 960px; } }
+      max-width: 960px; }
+      #ac_container .hidden-md {
+        display: none; } }
   @media (min-width: 1200px) {
     #ac_container {
       max-width: 1140px; } }
@@ -41,15 +43,13 @@
   margin-bottom: 40px; }
   .ac_menu-container .ac_menu-label {
     margin-right: 15px;
+    margin-bottom: 15px;
+    margin-top: 15px;
     font-weight: 500; }
   .ac_menu-container .ac_schedule-menu {
-    display: none;
-    align-items: center;
-    -ms-flex-align: center;
-    flex-wrap: wrap;
-    -ms-flex-wrap: wrap; }
+    width: 100%; }
     .ac_menu-container .ac_schedule-menu .ac_btn {
-      display: inline-block;
+      display: none;
       margin-right: 8px;
       padding: .375rem .75rem;
       font-weight: 400;
@@ -66,7 +66,10 @@
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
-      user-select: none; }
+      user-select: none;
+      -ms-flex: 0 0 15%;
+      flex: 0 0 15%;
+      max-width: 15%; }
       .ac_menu-container .ac_schedule-menu .ac_btn:hover {
         background-color: #f1f1f1; }
       .ac_menu-container .ac_schedule-menu .ac_btn.active {
@@ -74,11 +77,10 @@
         color: #fff; }
   .ac_menu-container #ac_menu-select {
     display: block;
-    margin-top: 10px;
     width: 100%;
-    height: calc(1.5em + .75rem + 2px);
+    height: 38px;
     padding: .375rem .75rem;
-    font-size: 14px;
+    font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
     color: #495057;
@@ -87,12 +89,69 @@
     border: 1px solid #ced4da;
     border-radius: .25rem;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out; }
+    .ac_menu-container #ac_menu-select option {
+      font-size: 16px; }
   @media (min-width: 768px) {
-    .ac_menu-container #ac_menu-select {
-      display: none; }
     .ac_menu-container .ac_schedule-menu {
       display: flex;
-      display: -ms-flexbox; } }
+      display: -ms-flexbox;
+      align-items: center;
+      -ms-flex-align: center;
+      flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+      -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+      -ms-flex-positive: 1;
+      flex-grow: 1;
+      max-width: 100%; } }
+  @media (min-width: 992px) {
+    .ac_menu-container .ac_schedule-menu .ac_btn {
+      display: inline-block; }
+    .ac_menu-container #ac_menu-select {
+      width: 170px; } }
+
+.ac_plugin-wrapper {
+  position: relative; }
+  .ac_plugin-wrapper .ac_loader-wrap {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .ac_plugin-wrapper .ac_loader,
+  .ac_plugin-wrapper .ac_loader:after {
+    border-radius: 50%;
+    width: 10em;
+    height: 10em; }
+  .ac_plugin-wrapper .ac_loader {
+    margin: 60px auto;
+    font-size: 10px;
+    position: relative;
+    border-top: 1.1em solid rgba(0, 104, 255, 0.25);
+    border-right: 1.1em solid rgba(0, 104, 255, 0.25);
+    border-bottom: 1.1em solid rgba(0, 104, 255, 0.25);
+    border-left: 1.1em solid #0068ff;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: load8 1.1s infinite linear;
+    animation: load8 1.1s infinite linear; }
+
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
 
 .ac_legend-container {
   display: flex;
@@ -127,7 +186,8 @@
 #availability-calendar {
   position: relative;
   transition: all ease .5s;
-  min-height: 390px; }
+  min-height: 390px;
+  opacity: 1; }
   #availability-calendar.bordered .ui-datepicker-header {
     margin-bottom: 15px;
     background-color: #0068ff; }
@@ -153,7 +213,9 @@
   #availability-calendar.bordered .ui-datepicker .ui-state-default {
     border-radius: 0; }
   #availability-calendar.loading {
-    opacity: .5; }
+    opacity: 0; }
+    #availability-calendar.loading ~ .ac_loader-wrap {
+      display: block; }
   #availability-calendar .ui-datepicker {
     width: 100% !important; }
   #availability-calendar .ui-datepicker-group table {

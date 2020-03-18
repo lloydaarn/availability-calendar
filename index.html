@@ -96,16 +96,52 @@
                 <div class="ac_btn" data-sched="sched2">Weekend</div>
                 <div class="ac_btn" data-sched="sched3">Weekdays</div>
                 <div class="ac_btn" data-sched="sched4">2 Weeks</div>
-            </div>
 
-            <select id="ac_menu-select">
-                <option value="sched1">1 Week</option>
-                <option value="sched2">Weekend</option>
-                <option value="sched3">Weekdays</option>
-                <option value="sched4">2 Weeks</option>
-            </select>
+                <select id="ac_menu-select">
+                    <option value="sched1" class="hidden-md">1 Week</option>
+                    <option value="sched2" class="hidden-md">Weekend</option>
+                    <option value="sched3" class="hidden-md">Weekdays</option>
+                    <option value="sched4" class="hidden-md">2 Weeks</option>
+                    <option disabled="disabled" selected hidden>Others</option>
+                    <option value="sched2">3 days / 2 nights</option>
+                    <option value="sched2">4 days / 3 nights</option>
+                    <option value="sched4">5 days / 4 nights</option>
+                    <option value="sched2">6 days / 5 nights</option>
+                    <option value="sched4">7 days / 6 nights</option>
+                    <option value="sched1">8 days / 7 nights</option>
+                    <option value="sched4">9 days / 8 nights</option>
+                    <option value="sched4">10 days / 9nights</option>
+                    <option value="sched4">11 days / 10nights</option>
+                    <option value="sched2">12 days / 11nights</option>
+                    <option value="sched4">13 days / 12nights</option>
+                    <option value="sched4">14 days / 13nights</option>
+                    <option value="sched4">15 days / 14nights</option>
+                    <option value="sched4">16 days / 15nights</option>
+                    <option value="sched4">17 days / 16nights</option>
+                    <option value="sched4">18 days / 17nights</option>
+                    <option value="sched4">19 days / 18nights</option>
+                    <option value="sched4">20 days / 19nights</option>
+                    <option value="sched4">21 days / 20nights</option>
+                    <option value="sched4">22 days / 21nights</option>
+                    <option value="sched4">23 days / 22nights</option>
+                    <option value="sched4">24 days / 23nights</option>
+                    <option value="sched4">25 days / 24nights</option>
+                    <option value="sched4">26 days / 25nights</option>
+                    <option value="sched4">27 days / 26nights</option>
+                    <option value="sched4">28 days / 27nights</option>
+                    <option value="sched4">29 days / 28nights</option>
+                </select>
+
+            </div>
         </div>
-        <div id="availability-calendar" class=""></div>
+
+        <div class="ac_plugin-wrapper">
+            <div id="availability-calendar" class=""></div>
+
+            <div class="ac_loader-wrap">
+                <div class="ac_loader"></div>
+            </div>
+        </div>
 
         <div class="ac_legend-container">
             <div class="legend-block _available">
